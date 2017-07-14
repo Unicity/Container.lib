@@ -1,0 +1,9 @@
+FROM centos:centos7
+
+RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y yum-utils && yum-config-manager --enable cr && yum install -y mc vim git nginx php71w-fpm php71w-bcmath php71w-cli php71w-mbstring php71w-pdo php71w-xml
+
+RUN echo -e "\ndate.timezone=America/Denver" >> /etc/php.ini
+RUN perl -pi -e 's#upload_max_filesize = 2M#upload_max_filesize = 20M#g' /etc/php.ini
+RUN perl -pi -e 's#memory_limit = 128M#memory_limit = 2048M#g' /etc/php.ini
+RUN perl -pi -e 's#max_execution_time = 30#max_execution_time = 240#g' /etc/php.ini
+RUN echo -e '\nshort_open_tag=On' >> /etc/php.ini
