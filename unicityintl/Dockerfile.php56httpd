@@ -1,5 +1,6 @@
 FROM centos:centos7
 
+# https://webtatic.com/packages/php56/
 RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y git mc vim httpd php56w php56w-bcmath php56w-cli php56w-gd php56w-ldap php56w-mbstring php56w-mcrypt php56w-mssql php56w-pear php56w-pecl-memcached php56w-pgsql php56w-soap php56w-xml php56w-devel gcc make uuid-devel libuuid-devel && pecl channel-update pecl.php.net && pecl install uuid
 
 RUN echo -e '\nextension=uuid.so' >> /etc/php.ini
