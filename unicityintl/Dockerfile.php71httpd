@@ -1,6 +1,7 @@
 FROM centos:centos7
 
 # https://webtatic.com/packages/php71/
+# https://crosp.net/blog/administration/install-latest-apache-server-centos-7/
 #RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y git mc vim httpd mod_php71w php71w-bcmath php71w-cli php71w-gd php71w-ldap php71w-mbstring php71w-mcrypt php71w-mssql php71w-odbc php71w-pear php71w-pecl-memcached php71w-pgsql php71w-soap php71w-xml php71w-devel gcc make uuid-devel libuuid-devel && pecl channel-update pecl.php.net && pecl install pthreads uuid
 RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y epel-release wget && cd /etc/yum.repos.d && wget https://repo.codeit.guru/codeit.el`rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release)`.repo --no-check-certificate && yum install -y git mc vim httpd mod_php71w php71w-bcmath php71w-cli php71w-gd php71w-ldap php71w-mbstring php71w-mcrypt php71w-mssql php71w-odbc php71w-pear php71w-pecl-memcached php71w-pgsql php71w-soap php71w-xml php71w-devel gcc make uuid-devel libuuid-devel && pecl channel-update pecl.php.net && pecl install uuid
 
