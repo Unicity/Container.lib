@@ -2,7 +2,11 @@ FROM centos:centos7
 
 # https://webtatic.com/packages/php56/
 # https://crosp.net/blog/administration/install-latest-apache-server-centos-7/
-RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y epel-release wget && cd /etc/yum.repos.d && wget https://repo.codeit.guru/codeit.el`rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release)`.repo --no-check-certificate && yum install -y git mc vim httpd php56w php56w-bcmath php56w-cli php56w-gd php56w-ldap php56w-mbstring php56w-mcrypt php56w-mssql php56w-pear php56w-pecl-memcached php56w-pgsql php56w-soap php56w-xml php56w-devel gcc make uuid-devel libuuid-devel && pecl channel-update pecl.php.net && pecl install uuid
+RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y epel-release && yum -y update && yum clean all && yum install -y git mc vim wget php56w php56w-bcmath php56w-cli php56w-gd php56w-ldap php56w-mbstring php56w-mcrypt php56w-mssql php56w-pear php56w-pecl-memcached php56w-pgsql php56w-soap php56w-xml php56w-devel gcc make uuid-devel libuuid-devel
+RUN pear config-set php_ini /etc/php.ini
+RUN pecl config-set php_ini /etc/php.ini
+RUN pecl channel-update pecl.php.net && pecl install uuid && cd /etc/yum.repos.d && wget https://repo.codeit.guru/codeit.el`rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release)`.repo --no-check-certificate && yum install -y httpd
+
 
 RUN echo -e '\nextension=uuid.so' >> /etc/php.ini
 RUN echo -e "\ndate.timezone=America/Denver" >> /etc/php.ini
