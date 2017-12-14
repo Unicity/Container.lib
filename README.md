@@ -27,6 +27,6 @@ See also, https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html.
 
 ### Using Image:
 
-1. Modified Dockerfile to start with `FROM unicityintl/php56httpd:latest`.
+1. Modify the Dockerfile to start with `FROM unicityintl/php56httpd:latest`.
 
 See also, https://github.com/Unicity/Hydra.php/issues/873
