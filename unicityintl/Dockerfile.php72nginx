@@ -1,7 +1,7 @@
 FROM centos:centos7
 
-# https://webtatic.com/packages/php71/
-RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y yum-utils && yum-config-manager --enable cr && yum install -y mc vim git nginx php71w-fpm php71w-bcmath php71w-cli php71w-mbstring php71w-pdo php71w-xml
+# https://webtatic.com/packages/php72/
+RUN rpm -Uvhi https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && yum update -y && yum install -y yum-utils && yum-config-manager --enable cr && yum install -y mc vim git nginx php72w-fpm php72w-bcmath php72w-cli php72w-mbstring php72w-pdo php72w-xml
 
 RUN echo -e "\ndate.timezone=America/Denver" >> /etc/php.ini
 RUN perl -pi -e 's#upload_max_filesize = 2M#upload_max_filesize = 20M#g' /etc/php.ini
