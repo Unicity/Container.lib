@@ -1,0 +1,3 @@
+curl -X GET \
+  http://localhost:49833/index.php \
+  -H 'cache-control: no-cache'
